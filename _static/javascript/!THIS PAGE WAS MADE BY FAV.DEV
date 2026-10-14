@@ -1,0 +1,9 @@
+/* ============================================================
+   REBASSED CENTRAL 868
+   Made with care by FAV.DEV
+   ============================================================ */
+console.log(
+  '%c REBASSED CENTRAL 868 %c MADE BY FAV.DEV ',
+  'background:#ff1493;color:#000;font-weight:bold;padding:4px 8px;border-radius:4px 0 0 4px;',
+  'background:#050005;color:#ff1493;font-weight:bold;padding:4px 8px;border-radius:0 4px 4px 0;'
+);

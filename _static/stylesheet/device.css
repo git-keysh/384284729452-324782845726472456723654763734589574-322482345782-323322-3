@@ -1,0 +1,143 @@
+/* ============================================================
+   RESET + DEVICE BASE
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+html, body {
+  width: 100%; height: 100%; overflow: hidden;
+  background: #050005; color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+body { position: fixed; inset: 0; user-select: none; -webkit-user-select: none; }
+img, iframe { display: block; max-width: 100%; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; }
+a { color: inherit; text-decoration: none; }
+::-webkit-scrollbar { width: 0; height: 0; }
+::selection { background: #ff1493; color: #000; }
+
+.mono { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; }
+.accent { color: #ff2a6d; }
+.dim { color: rgba(255,255,255,0.4); }
+
+/* low perf fallback */
+.low-perf .strip-stars,
+.low-perf .strip-far,
+.low-perf .strip-mid,
+.low-perf .strip-near,
+.low-perf .strip-road { animation-duration: 2s !important; }
+
+/* ============================================================
+   TABLET / SMALL LAPTOP
+   ============================================================ */
+@media (max-width: 1100px) {
+  .content { grid-template-columns: 1fr 1.2fr; gap: 1rem; }
+  .player { width: 240px; }
+  .video-grid { max-width: 520px; gap: 0.75rem; }
+}
+
+/* ============================================================
+   MOBILE — everything must fit & be usable
+   ============================================================ */
+@media (max-width: 900px) {
+  body { overflow: hidden; }
+
+  .corner-wave { width: 90px !important; height: 90px !important; opacity: 0.75; }
+
+  .content {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto !important;
+    padding: 0.6rem 0.9rem 170px !important;
+    gap: 0.8rem !important;
+    align-content: start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    height: 100%;
+  }
+  .content::-webkit-scrollbar { display: none; }
+
+  .panel-left { gap: 0.7rem; }
+  .block-about .block-text { font-size: 0.82rem; line-height: 1.4; }
+  .service-title { font-size: 1.15rem !important; }
+  .service-sub { font-size: 0.75rem !important; margin-bottom: 0.65rem !important; }
+  .service-cta { padding: 0.75rem 1rem !important; font-size: 0.72rem !important; max-width: none !important; }
+
+  /* Videos stay as rectangles, 2x2 grid, smaller gaps */
+  .video-grid {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: 1fr 1fr !important;
+    gap: 0.55rem !important;
+    max-width: 100% !important;
+    width: 100%;
+    aspect-ratio: 16 / 10 !important;
+    max-height: none !important;
+  }
+  .tile-tag { font-size: 0.5rem; letter-spacing: 0.15em; bottom: 6px; left: 8px; }
+
+  .yt-link {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .yt-handle { display: none; }
+
+  .banner-wrap { bottom: 12px; left: 12px; }
+  .banner { height: 32px !important; }
+
+  .player {
+    bottom: 12px !important;
+    right: 12px !important;
+    padding: 0.55rem 0.7rem !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    width: auto !important;
+    max-width: calc(100vw - 24px);
+    border-radius: 20px;
+  }
+  .player .vinyl { width: 54px !important; height: 54px !important; }
+  .player .progress-ring { display: none; }
+  .player .vinyl-rotor { width: 54px !important; height: 54px !important; }
+  .player .vinyl-art { width: 42px !important; height: 42px !important; }
+  .player .vinyl-center { width: 6px !important; height: 6px !important; }
+  .player .vinyl-glow { inset: -4px !important; }
+
+  .player .player-meta { flex: 1; min-width: 0; text-align: left; }
+  .player .meta-tag { display: none; }
+  .player .track-name { font-size: 0.8rem !important; text-align: left; }
+  .player .track-times { font-size: 0.55rem !important; justify-content: flex-start; }
+  .player .player-controls { gap: 0.35rem; }
+  .player .ctrl { width: 32px; height: 32px; }
+  .player .ctrl.play { width: 38px; height: 38px; }
+  .player .ctrl svg { width: 14px; height: 14px; }
+  .player .ctrl.play svg { width: 17px; height: 17px; }
+  .player .volume { display: none; }
+  .player .seek-strip { display: none; }
+}
+
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
+@media (max-width: 520px) {
+  .content { padding: 0.5rem 0.7rem 150px !important; gap: 0.6rem !important; }
+  .block-about .block-text { font-size: 0.75rem; }
+  .chips .chip { font-size: 0.55rem; padding: 0.2rem 0.5rem; }
+  .service-title { font-size: 1rem !important; }
+  .yt-link { padding: 0.5rem 0.7rem; font-size: 0.65rem; }
+  .banner { height: 26px !important; }
+  .player .vinyl { width: 46px !important; height: 46px !important; }
+  .player .vinyl-rotor { width: 46px !important; height: 46px !important; }
+  .player .vinyl-art { width: 36px !important; height: 36px !important; }
+  .player .track-name { font-size: 0.72rem !important; }
+  .corner-wave { width: 70px !important; height: 70px !important; }
+  .video-grid { gap: 0.4rem !important; }
+  .tile-tag { display: none; }
+}
